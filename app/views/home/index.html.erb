@@ -11,5 +11,13 @@
         <% if 1==1 %>
         <li><button>Admin Panel</button></li>
         <% end %>
+        <li>
+            <% if logged_in? %>
+            Welcome, <%= current_user.name %>!
+            <%= button_to "Logout", logout_path, method: :delete, class: "cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500" %>
+            <% else %>
+            <%= link_to "Login", login_path, class: "cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500" %>
+            <% end %>
+        </li>
     </ul>
 </nav>

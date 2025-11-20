@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_20_064716) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_20_155656) do
+  create_table "Orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_num"
+    t.integer "quantity"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "Users", force: :cascade do |t|
+    t.string "name"
+    t.string "password"
+    t.string "email"
+    t.string "street_address"
+    t.integer "province_id"
+    t.boolean "is_admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+  end
+
   create_table "menu_orders", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_num"
@@ -40,16 +61,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_20_064716) do
     t.decimal "total", precision: 10, scale: 2
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "user_id"
-    t.integer "item_num"
-    t.integer "quantity"
-    t.decimal "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "provinces", force: :cascade do |t|
     t.string "name"
     t.string "abbreviation"
@@ -60,18 +71,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_20_064716) do
   create_table "tax_rates", force: :cascade do |t|
     t.string "province"
     t.decimal "rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name"
-    t.string "password"
-    t.string "email"
-    t.string "street_address"
-    t.integer "province_id"
-    t.boolean "is_admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
