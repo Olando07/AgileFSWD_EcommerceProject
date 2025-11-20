@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_18_045628) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_20_061010) do
   create_table "menu_orders", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_num"
@@ -59,7 +59,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_18_045628) do
     t.string "password"
     t.string "email"
     t.string "street_address"
-    t.string "province"
+    t.integer "province_id"
     t.boolean "is_admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
