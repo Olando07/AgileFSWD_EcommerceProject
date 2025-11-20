@@ -8,3 +8,16 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+* {
+    color: white;
+}
+
+.login-divs, .signup-divs {
+    margin: 20px 0;
+}
+
+.login-divs input, .signup-divs input {
+    margin-top: 6px;
+    width: 270px;
+}
