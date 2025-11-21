@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "menu/index"
+  get "menu/show"
   get "home/login"
   get "home/signup"
   get "home/index"
