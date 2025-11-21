@@ -14,11 +14,16 @@ Rails.application.routes.draw do
   get "home", to: "home#index"
   get "login", to: "home#login"
   get "signup", to: "home#signup"
+
+  get "menu", to: "menu#index"
+  get "menu/:id", to: "menu#show"
+
   delete "/logout", to: "sessions#destroy"
   post "/login", to: "sessions#create"
-  post "/signup", to: "users#create"
-  # get "/me", to: "users#show"
 
+  get "/signup", to: "users#new"
+  post "/users", to: "users#create"
+ 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker

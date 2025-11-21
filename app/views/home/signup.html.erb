@@ -1,7 +1,7 @@
 <div class="container max-w-120 min-w-100 place-self-center my-35">
     <div class="container bg-gray-700 rounded-lg py-10 px-10 flex flex-col items-center">
         <h1 class="text-4xl py-6">A&W User Registration</h1>
-        <%= form_with url: signup_path, method: :post, class: "text-lg" do |f| %>
+        <%= form_with model: @user, method: :post, class: "text-lg" do |f| %>
         <div class="signup-divs">
             <label for="username">Enter a username:</label>
             <br>
@@ -25,28 +25,13 @@
         <div class="signup-divs">
             <label for="street_address">Enter your street address:</label>
             <br>
-            <%= f.text_field :street_address, placeholder:"Street Sddress", class:"relative block w-full appearance-none rounded-lg px-2 text-md text-zinc-950 placeholder:text-zinc-500 sm:text-md dark:text-white border border-zinc-950/10 data-hover:border-zinc-950/20 dark:border-white/10 dark:data-hover:border-white/20 bg-transparent dark:bg-white/5 focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:border-red-600 dark:data-invalid:data-hover:border-red-600 data-disabled:border-zinc-950/20 dark:data-disabled:border-white/15 dark:data-disabled:bg-white/2.5 dark:data-hover:data-disabled:border-white/15 dark:scheme-dark" %>
+            <%= f.text_field :street_address, placeholder:"Street Address", class:"relative block w-full appearance-none rounded-lg px-2 text-md text-zinc-950 placeholder:text-zinc-500 sm:text-md dark:text-white border border-zinc-950/10 data-hover:border-zinc-950/20 dark:border-white/10 dark:data-hover:border-white/20 bg-transparent dark:bg-white/5 focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:border-red-600 dark:data-invalid:data-hover:border-red-600 data-disabled:border-zinc-950/20 dark:data-disabled:border-white/15 dark:data-disabled:bg-white/2.5 dark:data-hover:data-disabled:border-white/15 dark:scheme-dark" %>
         </div>
         <div class="signup-divs">
             <label for="province">Enter your province:</label>
             <br>
-            <%= select_tag :province, 
-                    options_for_select([
-                        ["Select a province/territory", ""],
-                        ["Alberta", "AB"],
-                        ["British Columbia", "BC"],
-                        ["Manitoba", "MB"],
-                        ["New Brunswick", "NB"],
-                        ["Newfoundland and Labrador", "NL"],
-                        ["Northwest Territories", "NT"],
-                        ["Nova Scotia", "NS"],
-                        ["Nunavut", "NU"],
-                        ["Ontario", "ON"],
-                        ["Prince Edward Island", "PE"],
-                        ["Quebec", "QC"],
-                        ["Saskatchewan", "SK"],
-                        ["Yukon", "YT"]
-                    ]),
+            <%= f.select :province_id, 
+                    options_from_collection_for_select(Province.all, :id, :name), {prompt: "Select a province/territory"},
                     class: "relative block w-full rounded-lg px-2 text-md text-gray-700 sm:text-md dark:text-white border border-gray-700/10 hover:border-gray-700/20 dark:border-white/10 dark:hover:border-white/20 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500",
                     style: "color-scheme: light;"
                 %>

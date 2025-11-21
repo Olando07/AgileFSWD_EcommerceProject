@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_20_155656) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_20_223443) do
   create_table "Orders", force: :cascade do |t|
     t.integer "user_id"
     t.integer "item_num"
@@ -18,18 +18,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_20_155656) do
     t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "Users", force: :cascade do |t|
-    t.string "name"
-    t.string "password"
-    t.string "email"
-    t.string "street_address"
-    t.integer "province_id"
-    t.boolean "is_admin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
   end
 
   create_table "menu_orders", force: :cascade do |t|
@@ -73,5 +61,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_20_155656) do
     t.decimal "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "street_address"
+    t.integer "province_id"
+    t.boolean "is_admin", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 end

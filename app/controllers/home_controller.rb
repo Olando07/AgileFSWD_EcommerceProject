@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   end
 
   def signup
+    @user = User.new
   end
 
   def index

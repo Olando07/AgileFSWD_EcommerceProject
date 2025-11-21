@@ -5,10 +5,8 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :name, presence: true
-  validates :password, presence: true
   validates :email, presence: true
   validates :street_address, presence: true
   validates :province_id, presence: true
-  validates :is_admin, presence: true
-
+  validates :is_admin, inclusion: [true, false]
 end

@@ -1,23 +1,28 @@
-<nav>
-    <ul>
+<nav class="flex items-center justify-center">
+    <ul class="flex justify-center items-center gap-8 my-12 text-lg">
         <li>
-            <button>Home</button>
+            <%= link_to "Home", root_path, class:"cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"%>
         </li>
-        <li><button>About Us</button>
+        <li><%= link_to "Menu", menu_path, class: "cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"%>
         </li>
         <li>
-            <button>FAQ</button>
+            <a href="#about" class="cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">About Us</a>
         </li>
-        <% if 1==1 %>
-        <li><button>Admin Panel</button></li>
+        <li>
+            <a href="#faq" class="cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">FAQ</a>
+        </li>
+        <% if logged_in? && current_user.is_admin? %>
+        <li>
+            <%= link_to "Admin", admin_path, class:"cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"%>
+        </li>
         <% end %>
-        <li>
-            <% if logged_in? %>
-            Welcome, <%= current_user.name %>!
-            <%= button_to "Logout", logout_path, method: :delete, class: "cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500" %>
-            <% else %>
-            <%= link_to "Login", login_path, class: "cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500" %>
-            <% end %>
-        </li>
     </ul>
+    <div class="flex gap-4 items-center absolute right-30">
+        <% if logged_in? %>
+        <p>Welcome, <%= current_user.name %>!</p>
+        <%= button_to "Logout", logout_path, method: :delete, class: "cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500" %>
+        <% else %>
+        <%= link_to "Login", login_path, class: "cursor-pointer inline-flex items-center rounded-md bg-orange-500 px-4 py-1 text-md font-semibold text-white hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500" %>
+        <% end %>
+    </div>
 </nav>
